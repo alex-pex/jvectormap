@@ -1,3 +1,2 @@
 // components
-export { default as VectorMap } from './VectorMap';
-export { default as CustomVectorMap } from './CustomVectorMap';
+export { default as VectorMap, addMap } from './VectorMap';
