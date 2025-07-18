@@ -58,4 +58,4 @@ fi
 
 cat ${files[*]} >> "$filename.js"
 
-./node_modules/.bin/uglifyjs "$filename.js" -o "$filename.min.js" --source-map "$filename.min.map" -c
+./node_modules/.bin/uglifyjs "$filename.js" -o "$filename.min.js" --source-map "filename='$filename.min.map'" -c

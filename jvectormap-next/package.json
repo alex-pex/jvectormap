@@ -26,10 +26,10 @@
     "build": "./build.sh",
     "prepublishOnly": "npm run build"
   },
-  "dependencies": {
-    "jquery": ">=1.7"
-  },
   "devDependencies": {
-    "uglify-js": "^2.4.10"
+    "uglify-js": "^3.19.3"
+  },
+  "peerDependencies": {
+    "jquery": ">=1.7"
   }
 }

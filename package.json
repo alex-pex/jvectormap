@@ -5,9 +5,11 @@
     "*"
   ],
   "scripts": {
+    "prepare": "yarn workspaces run build",
     "start": "styleguidist server",
     "build": "styleguidist build"
   },
+  "packageManager": "yarn@1.22.22+sha256.c17d3797fb9a9115bf375e31bfd30058cac6bc9c3b8807a3d8cb2094794b51ca",
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@typescript-eslint/eslint-plugin": "2.x",

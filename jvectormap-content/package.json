@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "license": "MIT",
   "repository": "alex-pex/jvectormap",
+  "scripts": {
+    "build": "true"
+  },
   "files": [
     "*.js"
   ]
