@@ -1,6 +1,6 @@
 {
   "name": "jvectormap-next",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "jQuery plugin for embedding vector maps with reach API and methods for data visualization to the web-pages.",
   "keywords": [
     "map",
