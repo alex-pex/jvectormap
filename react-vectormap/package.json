@@ -1,6 +1,6 @@
 {
   "name": "@stadline/react-vectormap",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "MIT",
   "repository": "alex-pex/jvectormap",
   "main": "dist/index.js",
