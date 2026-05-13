@@ -25,7 +25,7 @@ jvm.DataSeries = function(params, elements, map) {
     this.setAttributes(params.attributes);
   }
 
-  if (jvm.$.isArray(params.scale)) {
+  if (Array.isArray(params.scale)) {
     scaleConstructor = (params.attribute === 'fill' || params.attribute === 'stroke') ? jvm.ColorScale : jvm.NumericScale;
     this.scale = new scaleConstructor(params.scale, params.normalizeFunction, params.min, params.max);
   } else if (params.scale) {

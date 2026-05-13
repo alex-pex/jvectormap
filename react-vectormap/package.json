@@ -6,6 +6,14 @@
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "unpkg": "dist/index.umd.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.js",
+      "default": "./dist/index.esm.js"
+    },
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "clean": "rimraf dist",
     "build": "cd .. && cross-env BABEL_ENV=production bili --root-dir react-vectormap",
@@ -15,7 +23,7 @@
     "dist/*"
   ],
   "dependencies": {
-    "jquery": "^3.4.0",
+    "jquery": "^4.0.0",
     "jvectormap-next": "^3.1.2",
     "prop-types": "^15.6.0"
   },
@@ -23,6 +31,6 @@
     "jvectormap-content": "^0.1.1"
   },
   "peerDependencies": {
-    "react": "16.*"
+    "react": ">=16.0.0"
   }
 }

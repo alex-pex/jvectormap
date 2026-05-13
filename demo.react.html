@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jVectorMap React DEMO</title>
+    <link rel="stylesheet" href="react-vectormap/dist/index.esm.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 24px;
+        font-family: sans-serif;
+        background: #f6f7fb;
+        color: #1f2937;
+      }
+
+      #root {
+        max-width: 960px;
+        margin: 0 auto;
+      }
+    </style>
+    <script type="importmap">
+      {
+        "imports": {
+          "jquery": "https://cdn.jsdelivr.net/npm/jquery@4.0.0-beta/+esm",
+          "react": "https://cdn.jsdelivr.net/npm/react@18.3.1/+esm",
+          "react-dom/client": "https://cdn.jsdelivr.net/npm/react-dom@18.3.1/client/+esm",
+          "react-vectormap": "./react-vectormap/dist/index.esm.js",
+          "world-mill": "./jvectormap-content/world-mill.js"
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module">
+      import React, { useState } from 'react';
+      import { createRoot } from 'react-dom/client';
+      import { VectorMap } from 'react-vectormap';
+
+      await import('world-mill');
+
+      const gdpData = {
+        AF: 16.63,
+        AL: 11.58,
+        DZ: 158.97,
+        // ...
+      };
+
+      function App() {
+        const [selectedRegion, setSelectedRegion] = useState('FR');
+
+        return React.createElement(
+          React.Fragment,
+          null,
+          React.createElement(
+            'div',
+            {
+              style: {
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '16px',
+                marginBottom: '16px',
+              },
+            },
+            React.createElement(
+              'div',
+              null,
+              React.createElement(
+                'h1',
+                { style: { margin: '0 0 8px', fontSize: '24px' } },
+                'React VectorMap Demo'
+              ),
+              React.createElement(
+                'p',
+                { style: { margin: 0, color: '#4b5563' } },
+                'Click a region to update React state through react-vectormap.'
+              )
+            ),
+            React.createElement(
+              'button',
+              {
+                type: 'button',
+                onClick: function() {
+                  setSelectedRegion(null);
+                },
+                style: {
+                  border: 0,
+                  borderRadius: '999px',
+                  padding: '10px 14px',
+                  background: '#111827',
+                  color: '#fff',
+                  cursor: 'pointer',
+                },
+              },
+              selectedRegion ? 'Clear selection (' + selectedRegion + ')' : 'No region selected'
+            )
+          ),
+          React.createElement(
+            'div',
+            {
+              style: {
+                height: '560px',
+                borderRadius: '20px',
+                overflow: 'hidden',
+                background: '#fff',
+                boxShadow: '0 18px 50px rgba(15, 23, 42, 0.08)',
+              },
+            },
+            React.createElement(VectorMap, {
+              map: 'world_mill',
+              backgroundColor: '#eef2ff',
+              selectedRegions: selectedRegion ? [selectedRegion] : [],
+              regionStyle: {
+                initial: {
+                  fill: '#cbd5e1',
+                },
+                selected: {
+                  fill: '#0f172a',
+                },
+              },
+              series: {
+                regions: [
+                  {
+                    values: gdpData,
+                    scale: ['#dbeafe', '#1d4ed8'],
+                    normalizeFunction: 'polynomial',
+                  },
+                ],
+              },
+              onRegionClick: function(event, code) {
+                setSelectedRegion(code);
+              },
+              onRegionTipShow: function(event, label, code) {
+                if (gdpData[code]) {
+                  label.html(label.html() + ' (GDP - ' + gdpData[code] + ')');
+                }
+              },
+            })
+          )
+        );
+      }
+
+      createRoot(document.getElementById('root')).render(React.createElement(App));
+    </script>
+  </body>
+</html>

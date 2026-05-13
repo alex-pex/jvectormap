@@ -174,7 +174,7 @@ jvm.Map = function(params) {
   if (this.params.focusOn) {
     if (typeof this.params.focusOn === 'string') {
       this.params.focusOn = {region: this.params.focusOn};
-    } else if (jvm.$.isArray(this.params.focusOn)) {
+    } else if (Array.isArray(this.params.focusOn)) {
       this.params.focusOn = {regions: this.params.focusOn};
     }
     this.setFocus(this.params.focusOn);
@@ -741,7 +741,7 @@ jvm.Map.prototype = {
       keys = [keys];
     }
 
-    if (jvm.$.isArray(keys)) {
+    if (Array.isArray(keys)) {
       for (i = 0; i < keys.length; i++) {
         this[type][keys[i]].element.setSelected(true);
       }
@@ -851,7 +851,7 @@ jvm.Map.prototype = {
     this.markersGroup = this.markersGroup || this.canvas.addGroup();
     this.markerLabelsGroup = this.markerLabelsGroup || this.canvas.addGroup();
 
-    if (jvm.$.isArray(markers)) {
+    if (Array.isArray(markers)) {
       markersArray = markers.slice();
       markers = {};
       for (i = 0; i < markersArray.length; i++) {
