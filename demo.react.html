@@ -28,11 +28,12 @@
         }
       }
     </script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   </head>
 
   <body>
     <div id="root"></div>
-    <script type="module">
+    <script type="text/babel" data-type="module" data-presets="react">
       import React, { useState } from 'react';
       import { createRoot } from 'react-dom/client';
       import { VectorMap, addMap } from 'react-vectormap';
@@ -50,99 +51,85 @@
       function App() {
         const [selectedRegion, setSelectedRegion] = useState('FR');
 
-        return React.createElement(
-          React.Fragment,
-          null,
-          React.createElement(
-            'div',
-            {
-              style: {
+        return (
+          <>
+            <div
+              style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 gap: '16px',
                 marginBottom: '16px',
-              },
-            },
-            React.createElement(
-              'div',
-              null,
-              React.createElement(
-                'h1',
-                { style: { margin: '0 0 8px', fontSize: '24px' } },
-                'React VectorMap Demo'
-              ),
-              React.createElement(
-                'p',
-                { style: { margin: 0, color: '#4b5563' } },
-                'Click a region to update React state through react-vectormap.'
-              )
-            ),
-            React.createElement(
-              'button',
-              {
-                type: 'button',
-                onClick: function() {
+              }}
+            >
+              <div>
+                <h1 style={{ margin: '0 0 8px', fontSize: '24px' }}>React VectorMap Demo</h1>
+                <p style={{ margin: 0, color: '#4b5563' }}>
+                  Click a region to update React state through react-vectormap.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
                   setSelectedRegion(null);
-                },
-                style: {
+                }}
+                style={{
                   border: 0,
                   borderRadius: '999px',
                   padding: '10px 14px',
                   background: '#111827',
                   color: '#fff',
                   cursor: 'pointer',
-                },
-              },
-              selectedRegion ? 'Clear selection (' + selectedRegion + ')' : 'No region selected'
-            )
-          ),
-          React.createElement(
-            'div',
-            {
-              style: {
+                }}
+              >
+                {selectedRegion ? `Clear selection (${selectedRegion})` : 'No region selected'}
+              </button>
+            </div>
+            <div
+              style={{
                 height: '560px',
                 borderRadius: '20px',
                 overflow: 'hidden',
                 background: '#fff',
                 boxShadow: '0 18px 50px rgba(15, 23, 42, 0.08)',
-              },
-            },
-            React.createElement(VectorMap, {
-              map: 'world_mill',
-              backgroundColor: '#eef2ff',
-              selectedRegions: selectedRegion ? [selectedRegion] : [],
-              regionStyle: {
-                initial: {
-                  fill: '#cbd5e1',
-                },
-                selected: {
-                  fill: '#0f172a',
-                },
-              },
-              series: {
-                regions: [
-                  {
-                    values: gdpData,
-                    scale: ['#dbeafe', '#1d4ed8'],
-                    normalizeFunction: 'polynomial',
+              }}
+            >
+              <VectorMap
+                map="world_mill"
+                backgroundColor="#eef2ff"
+                selectedRegions={selectedRegion ? [selectedRegion] : []}
+                regionStyle={{
+                  initial: {
+                    fill: '#cbd5e1',
                   },
-                ],
-              },
-              onRegionClick: function(event, code) {
-                setSelectedRegion(code);
-              },
-              onRegionTipShow: function(event, label, code) {
-                if (gdpData[code]) {
-                  label.html(label.html() + ' (GDP - ' + gdpData[code] + ')');
-                }
-              },
-            })
-          )
+                  selected: {
+                    fill: '#0f172a',
+                  },
+                }}
+                series={{
+                  regions: [
+                    {
+                      values: gdpData,
+                      scale: ['#dbeafe', '#1d4ed8'],
+                      normalizeFunction: 'polynomial',
+                    },
+                  ],
+                }}
+                onRegionClick={(event, code) => {
+                  setSelectedRegion(code);
+                }}
+                onRegionTipShow={(event, label, code) => {
+                  if (gdpData[code]) {
+                    label.html(label.html() + ' (GDP - ' + gdpData[code] + ')');
+                  }
+                }}
+              />
+            </div>
+          </>
         );
       }
 
-      createRoot(document.getElementById('root')).render(React.createElement(App));
+      createRoot(document.getElementById('root')).render(<App />);
     </script>
   </body>
 </html>
