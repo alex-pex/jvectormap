@@ -1,5 +1,10 @@
 import pkg from './package.json';
 
+const isJVectorMapNextExternal = id =>
+  id === 'jvectormap-next' ||
+  id.startsWith('jvectormap-next/') ||
+  id.includes('/jvectormap-next/');
+
 /** @type {import('bili').Config} */
 module.exports = {
   output: {
@@ -7,5 +12,5 @@ module.exports = {
     format: ['cjs', 'esm', 'umd', 'umd-min'],
     dir: `${__dirname}/dist`,
   },
-  externals: [/jvectormap-next\/jquery-jvectormap\.js/, 'jquery', 'react'],
+  externals: [isJVectorMapNextExternal, 'jquery', 'react'],
 };
