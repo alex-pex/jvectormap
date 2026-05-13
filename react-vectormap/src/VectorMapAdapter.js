@@ -4,10 +4,6 @@ import $ from 'jquery';
 import addVectorMap from 'jvectormap-next';
 import 'jvectormap-next/jquery-jvectormap.css';
 
-// Temporary compatibility bridge while jvectormap-next and jvectormap-content
-// still expect a browser-global jQuery object.
-window.jQuery = $;
-
 if ($.fn.vectorMap === undefined) {
   // Bind jVectorMap and jQuery
   addVectorMap($);

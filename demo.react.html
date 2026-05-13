@@ -24,7 +24,7 @@
           "react": "https://cdn.jsdelivr.net/npm/react@18.3.1/+esm",
           "react-dom/client": "https://cdn.jsdelivr.net/npm/react-dom@18.3.1/client/+esm",
           "react-vectormap": "./react-vectormap/dist/index.esm.js",
-          "world-mill": "./jvectormap-content/world-mill.js"
+          "jvectormap-content/world-mill": "./jvectormap-content/esm/world-mill.js"
         }
       }
     </script>
@@ -35,9 +35,10 @@
     <script type="module">
       import React, { useState } from 'react';
       import { createRoot } from 'react-dom/client';
-      import { VectorMap } from 'react-vectormap';
+      import { VectorMap, addMap } from 'react-vectormap';
+      import worldMill from 'jvectormap-content/world-mill';
 
-      await import('world-mill');
+      addMap('world_mill', worldMill);
 
       const gdpData = {
         AF: 16.63,
