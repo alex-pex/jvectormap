@@ -1,3 +1,5 @@
+import jvm from './jvectormap.js';
+
 /**
  * Abstract shape element. Shape element represents some visual vector or raster object.
  * @constructor

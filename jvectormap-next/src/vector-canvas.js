@@ -1,3 +1,5 @@
+import jvm from './jvectormap.js';
+
 /**
  * Class for vector images manipulations.
  * @constructor

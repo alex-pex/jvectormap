@@ -1,3 +1,5 @@
+import jvm from './jvectormap.js';
+
 jvm.VMLPathElement = function(config, style){
   var scale = new jvm.VMLElement('skew');
 

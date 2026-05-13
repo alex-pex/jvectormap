@@ -1,3 +1,5 @@
+import jvm from './jvectormap.js';
+
 jvm.NumericScale = function(scale, normalizeFunction, minValue, maxValue) {
   this.scale = [];
 

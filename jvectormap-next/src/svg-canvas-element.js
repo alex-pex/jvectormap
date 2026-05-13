@@ -1,3 +1,5 @@
+import jvm from './jvectormap.js';
+
 jvm.SVGCanvasElement = function(container, width, height){
   this.classPrefix = 'SVG';
   jvm.SVGCanvasElement.parentClass.call(this, 'svg');

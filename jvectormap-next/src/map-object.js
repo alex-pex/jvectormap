@@ -1,3 +1,5 @@
+import jvm from './jvectormap.js';
+
 jvm.MapObject = function(config){};
 
 jvm.MapObject.prototype.getLabelText = function(key){

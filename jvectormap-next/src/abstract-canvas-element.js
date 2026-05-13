@@ -1,3 +1,5 @@
+import jvm from './jvectormap.js';
+
 /**
  * Implements abstract vector canvas.
  * @constructor

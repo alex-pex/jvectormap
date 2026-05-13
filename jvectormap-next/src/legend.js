@@ -1,3 +1,5 @@
+import jvm from './jvectormap.js';
+
 /**
  * Represents map legend.
  * @constructor

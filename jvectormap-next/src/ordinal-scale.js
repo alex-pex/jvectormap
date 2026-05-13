@@ -1,3 +1,5 @@
+import jvm from './jvectormap.js';
+
 jvm.OrdinalScale = function(scale){
   this.scale = scale;
 };

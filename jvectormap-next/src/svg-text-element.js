@@ -1,3 +1,5 @@
+import jvm from './jvectormap.js';
+
 jvm.SVGTextElement = function(config, style){
   jvm.SVGTextElement.parentClass.call(this, 'text', config, style);
 }

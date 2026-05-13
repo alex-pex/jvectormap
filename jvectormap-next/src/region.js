@@ -1,3 +1,5 @@
+import jvm from './jvectormap.js';
+
 jvm.Region = function(config){
   var bbox,
       text,

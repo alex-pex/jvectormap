@@ -1,3 +1,5 @@
+import jvm from './jvectormap.js';
+
 jvm.SimpleScale = function(scale){
   this.scale = scale;
 };

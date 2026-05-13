@@ -1,3 +1,5 @@
+import jvm from './jvectormap.js';
+
 jvm.VMLCanvasElement = function(container, width, height){
   this.classPrefix = 'VML';
   jvm.VMLCanvasElement.parentClass.call(this, 'group');

@@ -1,3 +1,5 @@
+import jvm from './jvectormap.js';
+
 /**
  * Creates map, draws paths, binds events.
  * @constructor
@@ -596,7 +598,7 @@ jvm.Map.prototype = {
     }
 
     if (typeof anchorX != 'undefined' && typeof anchorY != 'undefined') {
-      zoomStep = scale / this.scale;
+      var zoomStep = scale / this.scale;
       if (isCentered) {
         transX = anchorX + this.defaultWidth * (this.width / (this.defaultWidth * scale)) / 2;
         transY = anchorY + this.defaultHeight * (this.height / (this.defaultHeight * scale)) / 2;

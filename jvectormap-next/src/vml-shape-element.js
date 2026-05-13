@@ -1,3 +1,5 @@
+import jvm from './jvectormap.js';
+
 jvm.VMLShapeElement = function(name, config){
   jvm.VMLShapeElement.parentClass.call(this, name, config);
 

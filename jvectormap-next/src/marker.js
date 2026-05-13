@@ -1,3 +1,5 @@
+import jvm from './jvectormap.js';
+
 jvm.Marker = function(config){
   var text;
 

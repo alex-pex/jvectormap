@@ -1,3 +1,5 @@
+import jvm from './jvectormap.js';
+
 /**
  * Basic wrapper for DOM element.
  * @constructor
