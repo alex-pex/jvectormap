@@ -1,3 +1,5 @@
+import jvm from './jvectormap.js';
+
 jvm.SVGImageElement = function(config, style){
   jvm.SVGImageElement.parentClass.call(this, 'image', config, style);
 };

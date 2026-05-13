@@ -1,3 +1,5 @@
+import jvm from './jvectormap.js';
+
 /**
  * Contains methods for transforming point on sphere to
  * Cartesian coordinates using various projections.

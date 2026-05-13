@@ -1,3 +1,5 @@
+import jvm from './jvectormap.js';
+
 /**
  * Creates map with drill-down functionality.
  * @constructor

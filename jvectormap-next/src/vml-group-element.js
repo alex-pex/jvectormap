@@ -1,3 +1,5 @@
+import jvm from './jvectormap.js';
+
 jvm.VMLGroupElement = function(){
   jvm.VMLGroupElement.parentClass.call(this, 'group');
 

@@ -4,7 +4,7 @@ import $ from 'jquery';
 import addVectorMap from 'jvectormap-next';
 import 'jvectormap-next/jquery-jvectormap.css';
 
-if (typeof module === 'object') {
+if ($.fn.vectorMap === undefined) {
   // Bind jVectorMap and jQuery
   addVectorMap($);
 }

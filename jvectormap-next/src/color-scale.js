@@ -1,3 +1,5 @@
+import jvm from './jvectormap.js';
+
 jvm.ColorScale = function(colors, normalizeFunction, minValue, maxValue) {
   jvm.ColorScale.parentClass.apply(this, arguments);
 }

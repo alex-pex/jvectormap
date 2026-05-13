@@ -1,3 +1,5 @@
+import jvm from './jvectormap.js';
+
 jvm.VMLCircleElement = function(config, style){
   jvm.VMLCircleElement.parentClass.call(this, 'oval', config, style);
 };

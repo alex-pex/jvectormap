@@ -4,9 +4,29 @@
   "license": "MIT",
   "repository": "alex-pex/jvectormap",
   "scripts": {
-    "build": "true"
+    "build": "bili esm/*.js",
+    "prepublishOnly": "npm run build"
+  },
+  "exports": {
+    "./*": {
+      "import": "./esm/*.js",
+      "require": "./*.js"
+    },
+    "./*.js": {
+      "import": "./esm/*.js",
+      "require": "./*.js"
+    }
+  },
+  "bili": {
+    "output": {
+      "moduleName": "jvectormapContent",
+      "format": ["umd"],
+      "dir": ".",
+      "fileName": "[name].js"
+    }
   },
   "files": [
-    "*.js"
+    "*.js",
+    "esm/**"
   ]
 }

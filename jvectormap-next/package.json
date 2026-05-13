@@ -16,18 +16,26 @@
   "contributors": [
     "Alexandre Paixao <alexandre.paixao@live.fr>"
   ],
-  "main": "jquery-jvectormap.js",
+  "main": "./index.cjs.js",
+  "module": "./index.esm.js",
+  "unpkg": "./jquery-jvectormap.min.js",
+  "exports": {
+    ".": {
+      "import": "./index.esm.js",
+      "require": "./index.cjs.js"
+    },
+    "./jquery-jvectormap.css": "./jquery-jvectormap.css"
+  },
   "files": [
+    "/index.cjs.js",
+    "/index.esm.js",
     "/jquery-*",
     "/LICENSE-*"
   ],
   "repository": "alex-pex/jvectormap",
   "scripts": {
-    "build": "./build.sh",
+    "build": "cd .. && BABEL_ENV=production ./node_modules/.bin/bili --root-dir jvectormap-next",
     "prepublishOnly": "npm run build"
-  },
-  "devDependencies": {
-    "uglify-js": "^3.19.3"
   },
   "peerDependencies": {
     "jquery": ">=1.7"

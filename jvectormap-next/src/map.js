@@ -1,3 +1,5 @@
+import jvm from './jvectormap.js';
+
 /**
  * Creates map, draws paths, binds events.
  * @constructor
@@ -172,7 +174,7 @@ jvm.Map = function(params) {
   if (this.params.focusOn) {
     if (typeof this.params.focusOn === 'string') {
       this.params.focusOn = {region: this.params.focusOn};
-    } else if (jvm.$.isArray(this.params.focusOn)) {
+    } else if (Array.isArray(this.params.focusOn)) {
       this.params.focusOn = {regions: this.params.focusOn};
     }
     this.setFocus(this.params.focusOn);
@@ -596,7 +598,7 @@ jvm.Map.prototype = {
     }
 
     if (typeof anchorX != 'undefined' && typeof anchorY != 'undefined') {
-      zoomStep = scale / this.scale;
+      var zoomStep = scale / this.scale;
       if (isCentered) {
         transX = anchorX + this.defaultWidth * (this.width / (this.defaultWidth * scale)) / 2;
         transY = anchorY + this.defaultHeight * (this.height / (this.defaultHeight * scale)) / 2;
@@ -739,7 +741,7 @@ jvm.Map.prototype = {
       keys = [keys];
     }
 
-    if (jvm.$.isArray(keys)) {
+    if (Array.isArray(keys)) {
       for (i = 0; i < keys.length; i++) {
         this[type][keys[i]].element.setSelected(true);
       }
@@ -849,7 +851,7 @@ jvm.Map.prototype = {
     this.markersGroup = this.markersGroup || this.canvas.addGroup();
     this.markerLabelsGroup = this.markerLabelsGroup || this.canvas.addGroup();
 
-    if (jvm.$.isArray(markers)) {
+    if (Array.isArray(markers)) {
       markersArray = markers.slice();
       markers = {};
       for (i = 0; i < markersArray.length; i++) {
