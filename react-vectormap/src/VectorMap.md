@@ -1,3 +1,11 @@
+## Live example
+
+```jsx live
+import React from 'react'
+
+<div style={{ padding: 12, border: '1px dashed #ccc' }}>VitePress `jsx live` block</div>
+```
+
 You can either load a static map ahead of time:
 
 ```js
