@@ -6,8 +6,8 @@
   ],
   "scripts": {
     "prepare": "yarn workspaces run build",
-    "start": "styleguidist server",
-    "build": "styleguidist build"
+    "start": "vitepress dev .",
+    "build": "vitepress build ."
   },
   "packageManager": "yarn@1.22.22+sha256.c17d3797fb9a9115bf375e31bfd30058cac6bc9c3b8807a3d8cb2094794b51ca",
   "devDependencies": {
@@ -32,9 +32,9 @@
     "prettier": "^1.19.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-styleguidist": "^10.6.2",
     "style-loader": "^1.1.3",
     "typescript": "^3.8.2",
+    "vitepress": "^1.6.4",
     "webpack": "^4.41.6"
   }
 }
