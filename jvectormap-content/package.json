@@ -1,6 +1,6 @@
 {
   "name": "jvectormap-content",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "license": "MIT",
   "repository": "alex-pex/jvectormap",
   "scripts": {
@@ -20,7 +20,9 @@
   "bili": {
     "output": {
       "moduleName": "jvectormapContent",
-      "format": ["umd"],
+      "format": [
+        "umd"
+      ],
       "dir": ".",
       "fileName": "[name].js"
     }

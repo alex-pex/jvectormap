@@ -1,6 +1,6 @@
 {
   "name": "@stadline/react-vectormap",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "license": "MIT",
   "repository": "alex-pex/jvectormap",
   "main": "dist/index.js",
@@ -24,11 +24,11 @@
   ],
   "dependencies": {
     "jquery": "^4.0.0",
-    "jvectormap-next": "^3.1.2",
+    "jvectormap-next": "^3.2.0",
     "prop-types": "^15.6.0"
   },
   "devDependencies": {
-    "jvectormap-content": "^0.1.1"
+    "jvectormap-content": "^0.2.0"
   },
   "peerDependencies": {
     "react": ">=16.0.0"
