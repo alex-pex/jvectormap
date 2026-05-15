@@ -1,39 +1,23 @@
 You can either load a static map ahead of time:
 
-```js
-// src/main.js
+```jsx live
+import VectorMap from './VectorMap.js'
+import EnsureWorldMap from './examples/EnsureWorldMap.js'
 
-const { addMap } = require('@stadline/react-vectormap');
-addMap('france', require('jvectormap-content/fr_regions_2016-mill.js'));
-
-// src/components/France.jsx
-
-<div style={{ height: 500 }}>
-  <VectorMap map="france" />
-</div>
+<>
+  <EnsureWorldMap />
+  <div style={{ height: 500 }}>
+    <VectorMap map="world_mill" backgroundColor="#eee" />
+  </div>
+</>
 ```
 
 Or you can skip adding the map and provide the content directly (useful when generating the map on the fly):
 
-```js
-// src/components/GymSteppers.jsx
+```jsx live
+import GymSteppersExample from './examples/GymSteppersExample.js'
 
-const mapContent = require('./maps/custom.js').default;
-initialState = { count: 1 };
-
-<>
-  <button onClick={() => setState({ count: state.count < 15 ? state.count + 1 : 1 })}>
-    Stepper #{state.count} is selected.
-  </button>
-
-  <div style={{ height: 500 }}>
-    <VectorMap
-      mapContent={mapContent}
-      selectedRegions={'step' + state.count}
-      className={'map-' + state.count}
-    />
-  </div>
-</>
+<GymSteppersExample />
 ```
 
 ## BREAKING CHANGE

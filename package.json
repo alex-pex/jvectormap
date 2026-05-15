@@ -6,14 +6,17 @@
   ],
   "scripts": {
     "prepare": "yarn workspaces run build",
-    "start": "styleguidist server",
-    "build": "styleguidist build"
+    "start": "vitepress dev .",
+    "docs:dev": "vitepress dev .",
+    "build": "node -e \"require('fs').rmSync('docs', { recursive: true, force: true })\" && vitepress build . --outDir docs"
   },
   "packageManager": "yarn@1.22.22+sha256.c17d3797fb9a9115bf375e31bfd30058cac6bc9c3b8807a3d8cb2094794b51ca",
   "devDependencies": {
     "@babel/core": "^7.0.0",
+    "@babel/standalone": "7.29.4",
     "@typescript-eslint/eslint-plugin": "2.x",
     "@typescript-eslint/parser": "2.x",
+    "@vitejs/plugin-react": "5.2.0",
     "babel-eslint": "10.x",
     "babel-loader": "^8.0.6",
     "babel-preset-react-app": "^9.1.1",
@@ -31,10 +34,11 @@
     "lerna": "^3.20.2",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
+    "react-docgen": "8.0.3",
     "react-dom": "^16.12.0",
-    "react-styleguidist": "^10.6.2",
     "style-loader": "^1.1.3",
     "typescript": "^3.8.2",
+    "vitepress": "1.6.4",
     "webpack": "^4.41.6"
   }
 }
