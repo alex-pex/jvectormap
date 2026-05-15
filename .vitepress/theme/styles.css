@@ -1,0 +1,51 @@
+.jsx-live {
+  margin: 24px 0;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--vp-c-bg-soft);
+}
+
+.jsx-live__editor {
+  display: block;
+  width: 100%;
+  min-height: 220px;
+  padding: 16px;
+  border: 0;
+  border-bottom: 1px solid var(--vp-c-divider);
+  resize: vertical;
+  background: var(--vp-code-block-bg);
+  color: var(--vp-code-block-color);
+  font: 13px/1.6 var(--vp-font-family-mono);
+}
+
+.jsx-live__preview {
+  min-height: 120px;
+  padding: 20px;
+  background: var(--vp-c-bg);
+}
+
+.jsx-live__error {
+  margin: 0;
+  padding: 12px 16px 16px;
+  color: #b91c1c;
+  white-space: pre-wrap;
+  font: 12px/1.5 var(--vp-font-family-mono);
+}
+
+.react-prop-table {
+  margin-top: 32px;
+}
+
+.react-prop-table h2 {
+  margin-bottom: 16px;
+}
+
+.react-prop-table table {
+  display: table;
+  width: 100%;
+}
+
+.react-prop-table code {
+  white-space: pre-wrap;
+}
