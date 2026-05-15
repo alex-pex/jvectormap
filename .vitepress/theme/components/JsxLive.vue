@@ -17,7 +17,6 @@ const props = defineProps({
 
 const moduleImporters = import.meta.glob([
   '/react-vectormap/src/**/*.{js,jsx,ts,tsx}',
-  '/jvectormap-next/**/*.{js,jsx,ts,tsx}',
   '/jvectormap-content/esm/**/*.js',
 ]);
 

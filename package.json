@@ -16,7 +16,7 @@
     "@babel/standalone": "7.29.4",
     "@typescript-eslint/eslint-plugin": "2.x",
     "@typescript-eslint/parser": "2.x",
-    "@vitejs/plugin-react": "6.0.2",
+    "@vitejs/plugin-react": "5.2.0",
     "babel-eslint": "10.x",
     "babel-loader": "^8.0.6",
     "babel-preset-react-app": "^9.1.1",

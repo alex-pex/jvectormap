@@ -6,10 +6,10 @@ import EnsureWorldMap from './examples/EnsureWorldMap.js'
 
 <>
   <EnsureWorldMap />
-<div style={{ height: 500 }}>
+  <div style={{ height: 500 }}>
     <VectorMap map="world_mill" backgroundColor="#eee" />
-</div>
- </>
+  </div>
+</>
 ```
 
 Or you can skip adding the map and provide the content directly (useful when generating the map on the fly):

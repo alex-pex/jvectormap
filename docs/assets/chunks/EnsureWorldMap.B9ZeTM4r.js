@@ -1,0 +1,1 @@
+import{a as r,r as o}from"./theme.DSe-juY_.js";import t from"./world-mill.C9FCe0-_.js";import{b as a}from"./index.BR5A4vXF.js";import"./framework.BtCGr7Q8.js";import"./VectorMapAdapter.CdaenAvD.js";function m(){return o.useEffect(()=>{a("world_mill",t)},[]),null}const u=r.memo(m);export{u as default};

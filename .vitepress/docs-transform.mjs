@@ -98,6 +98,10 @@ function parseImportStatement(statement, markdownPath) {
     ? resolveFile(markdownDirectory, source)
     : null;
 
+  if (source.startsWith('.') && !resolvedRelativeFile) {
+    throw new Error(`Unable to resolve live JSX import in ${markdownPath}: ${source}`);
+  }
+
   return {
     source,
     resolvedSource: resolvedRelativeFile
@@ -177,17 +181,24 @@ function formatPropType(type) {
   }
 }
 
-function readComponentDoc(componentPath, visited = new Set()) {
+function collectComponentDoc(componentPath, visited = new Set()) {
   if (visited.has(componentPath)) return null;
   visited.add(componentPath);
 
   const source = fs.readFileSync(componentPath, 'utf8');
-  const docs = parse(source, {
-    babelOptions: {
-      babelrc: false,
-      configFile: false,
-    },
-  });
+  let docs;
+
+  try {
+    docs = parse(source, {
+      babelOptions: {
+        babelrc: false,
+        configFile: false,
+      },
+    });
+  } catch {
+    return null;
+  }
+
   const componentDoc = docs[0];
 
   if (!componentDoc) {
@@ -204,16 +215,28 @@ function readComponentDoc(componentPath, visited = new Set()) {
       return accumulator;
     }
 
-    const composedDoc = readComponentDoc(resolvedComponentPath, visited);
+    const composedDoc = collectComponentDoc(resolvedComponentPath, visited);
     return composedDoc ? { ...accumulator, ...composedDoc.props } : accumulator;
   }, {});
-
-  const props = { ...inheritedProps, ...(componentDoc.props || {}) };
 
   return {
     displayName: componentDoc.displayName || path.basename(componentPath, path.extname(componentPath)),
     description: componentDoc.description || '',
-    props: Object.entries(props)
+    props: { ...inheritedProps, ...(componentDoc.props || {}) },
+  };
+}
+
+function readComponentDoc(componentPath) {
+  const componentDoc = collectComponentDoc(componentPath);
+
+  if (!componentDoc) {
+    return null;
+  }
+
+  return {
+    displayName: componentDoc.displayName,
+    description: componentDoc.description || '',
+    props: Object.entries(componentDoc.props)
       .map(([name, value]) => ({
         name,
         required: Boolean(value.required),
