@@ -1,0 +1,1 @@
+import{b as a,I as t,g as o,j as r}from"./chunks/framework.BtCGr7Q8.js";const _=JSON.parse('{"title":"jVectorMap","description":"","frontmatter":{},"headers":[],"relativePath":"index.md","filePath":"README.md"}'),c={name:"index.md"};function n(s,e,p,i,l,d){return t(),o("div",null,[...e[0]||(e[0]=[r("",5)])])}const h=a(c,[["render",n]]);export{_ as __pageData,h as default};

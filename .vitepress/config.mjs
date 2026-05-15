@@ -24,14 +24,12 @@ function transformReactWorkspaceJsx() {
 export default defineConfig({
   title: 'jVectorMap',
   description: 'Documentation for jvectormap-next and @stadline/react-vectormap.',
+  rewrites: {
+    'README.md': 'index.md',
+  },
   srcExclude: ['docs/**', 'node_modules/**', '**/dist/**'],
   cleanUrls: true,
   themeConfig: {
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: 'jvectormap-next', link: '/jvectormap-next/README' },
-      { text: 'react-vectormap', link: '/react-vectormap/src/VectorMap' },
-    ],
     sidebar: [
       {
         text: 'Packages',
