@@ -6,17 +6,57 @@
   background: var(--vp-c-bg-soft);
 }
 
+.jsx-live__editor-shell {
+  position: relative;
+  border-bottom: 1px solid var(--vp-c-divider);
+  background: var(--vp-code-block-bg);
+}
+
+.jsx-live__editor-highlight {
+  overflow: auto;
+  pointer-events: none;
+}
+
+.jsx-live__editor-highlight pre {
+  margin: 0;
+  min-height: 220px;
+  padding: 16px;
+  overflow: hidden;
+  background: transparent !important;
+  font: 13px/1.6 var(--vp-font-family-mono);
+}
+
+.jsx-live__editor-highlight code {
+  display: block;
+  min-height: 188px;
+  font: inherit;
+  white-space: pre;
+}
+
 .jsx-live__editor {
   display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
   min-height: 220px;
   padding: 16px;
   border: 0;
-  border-bottom: 1px solid var(--vp-c-divider);
   resize: vertical;
-  background: var(--vp-code-block-bg);
-  color: var(--vp-code-block-color);
+  overflow: auto;
+  background: transparent;
+  color: transparent;
+  caret-color: var(--vp-code-block-color);
   font: 13px/1.6 var(--vp-font-family-mono);
+}
+
+.jsx-live__editor::selection,
+.jsx-live__editor::-moz-selection {
+  background: rgba(59, 130, 246, 0.35);
+  color: transparent;
+}
+
+.jsx-live__editor:focus {
+  outline: none;
 }
 
 .jsx-live__preview {

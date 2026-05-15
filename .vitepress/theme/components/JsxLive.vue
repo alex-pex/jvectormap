@@ -2,6 +2,7 @@
 import * as Babel from '@babel/standalone';
 import * as React from 'react';
 import ReactDOM from 'react-dom';
+import { codeToHtml } from 'shiki';
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 
 const props = defineProps({
@@ -24,8 +25,12 @@ const decodedCode = JSON.parse(decodeURIComponent(props.code));
 const importDefinitions = JSON.parse(decodeURIComponent(props.imports));
 const editableCode = ref(decodedCode);
 const error = ref('');
+const highlightedCode = ref('');
+const editorRef = ref(null);
+const editorHighlightRef = ref(null);
 const previewRef = ref(null);
 const loadedScope = ref(null);
+let highlightRequestId = 0;
 
 const isReady = computed(() => loadedScope.value !== null);
 
@@ -84,6 +89,37 @@ function compilePreview(code, scope) {
   return factory(React, ...scopeValues);
 }
 
+async function renderHighlightedCode() {
+  const requestId = ++highlightRequestId;
+  const html = await codeToHtml(editableCode.value || ' ', {
+    lang: 'jsx',
+    themes: {
+      light: 'github-light',
+      dark: 'github-dark',
+    },
+  });
+
+  if (requestId !== highlightRequestId) {
+    return;
+  }
+
+  highlightedCode.value = html.replace('<pre class="shiki', '<pre class="shiki jsx-live__shiki');
+  await nextTick();
+  syncEditorScroll();
+}
+
+function syncEditorScroll() {
+  const editorElement = editorRef.value;
+  const highlightElement = editorHighlightRef.value;
+
+  if (!editorElement || !highlightElement) {
+    return;
+  }
+
+  highlightElement.scrollTop = editorElement.scrollTop;
+  highlightElement.scrollLeft = editorElement.scrollLeft;
+}
+
 async function renderPreview() {
   if (!previewRef.value || !isReady.value) {
     return;
@@ -101,6 +137,7 @@ async function renderPreview() {
 
 onMounted(async () => {
   try {
+    await renderHighlightedCode();
     loadedScope.value = await buildScope();
     await nextTick();
     await renderPreview();
@@ -114,13 +151,23 @@ onBeforeUnmount(() => {
 });
 
 watch(editableCode, () => {
+  renderHighlightedCode();
   renderPreview();
 });
 </script>
 
 <template>
   <div class="jsx-live">
-    <textarea v-model="editableCode" class="jsx-live__editor" spellcheck="false" />
+    <div class="jsx-live__editor-shell">
+      <div ref="editorHighlightRef" class="jsx-live__editor-highlight" aria-hidden="true" v-html="highlightedCode" />
+      <textarea
+        ref="editorRef"
+        v-model="editableCode"
+        class="jsx-live__editor"
+        spellcheck="false"
+        @scroll="syncEditorScroll"
+      />
+    </div>
     <div ref="previewRef" class="jsx-live__preview" />
     <pre v-if="error" class="jsx-live__error">{{ error }}</pre>
   </div>
